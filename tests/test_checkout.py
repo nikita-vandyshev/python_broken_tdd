@@ -12,6 +12,12 @@ def line(
         "unit_price_kopecks": unit_price_kopecks,
     }
 
+
+def test_smoke_single_line_without_delivery() -> None:
+    assert validate_order([line()]) is None
+    assert calculate_order_total([line()]) == 12_000
+
+
 def test_empty_order_is_rejected() -> None:
     assert validate_order([]) is not None
 
